@@ -12,8 +12,5 @@ export interface IUpdateUserRepository {
 }
 
 export interface IUpdateUserController {
-  handle(
-    id: string,
-    httpRequest: HttpRequest<UpdateUserParams>
-  ): Promise<HttpResponse<User>>;
+  handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<User>>;
 }
