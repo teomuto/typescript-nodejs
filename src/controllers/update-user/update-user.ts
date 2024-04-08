@@ -19,7 +19,7 @@ export class UpdateUserController implements IUpdateUserController {
         };
       }
 
-      // validate if the body is not empty and it has all the right fields, also not empty
+      // validate if the body is not empty and it has all the right fields
       const allowedChangeFields: (keyof UpdateUserParams)[] = [
         "firstName",
         "lastName",

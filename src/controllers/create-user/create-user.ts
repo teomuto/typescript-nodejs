@@ -33,6 +33,23 @@ export class CreateUserController implements ICreateUserController {
         };
       }
 
+      const allowedFields: (keyof CreateUserParams)[] = [
+        "firstName",
+        "lastName",
+        "email",
+        "password",
+      ];
+      const areTheFieldsCorrect = Object.keys(httpRequest.body!).some(
+        (key) => !allowedFields.includes(key as keyof CreateUserParams)
+      );
+
+      if (areTheFieldsCorrect) {
+        return {
+          statusCode: 400,
+          body: "Some received field is not allowed",
+        };
+      }
+
       const user = await this.createUserRepository.createUser(
         httpRequest.body!
       );
